@@ -32,7 +32,7 @@ window.onload=function(){
 			msg:'welcome vue2.0'
 		},
 		methods:{
-			update: function(){		// 触发beforeUpdate和updated
+			update: function(){		// 更新data时都会触发beforeUpdate和updated
 				this.msg='大家好';
 			},
 			destroy: function(){
@@ -52,6 +52,7 @@ window.onload=function(){
 			console.log('mounted模板编译完成');
 		},
 		beforeUpdate: function(){
+			console.log("-----------------------");
 			console.log('beforeUpdate组件更新之前');
 			alert(Math.random());
 		},

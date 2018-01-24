@@ -39,8 +39,8 @@ var vm1 = new Vue({
 		msg: "11",
 	},
 	methods:{
-		uu: function(){					// 触发beforeUpdate和updated
-			this.msg = '33';
+		uu: function(){					// 更新data时都会触发beforeUpdate和updated
+			this.msg = Math.random();
 		},
 	},
 	created: function(){
@@ -53,6 +53,7 @@ var vm1 = new Vue({
 		console.log('mounted模板编译完成');
 	},
 	beforeUpdate: function(){
+		console.log("-----------------------");
 		console.log('beforeUpdate组件更新之前');
 		alert(Math.random());
 	},
@@ -65,7 +66,7 @@ var vm1 = new Vue({
 });
 
 setTimeout(function() {
-	vm1.$data.msg = 22;			// 触发beforeUpdate updated
+	vm1.$data.msg = 22;			// 更新data时都会触发beforeUpdate和updated
 }, 1000);
 
 </script>
