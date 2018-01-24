@@ -25,9 +25,8 @@ http://www.cnblogs.com/GuliGugaLiz/p/7609103.html
 </pre>
 
 <div id="box">
-	<input type="button" value="更新数据" @click="update">
+	<input type="button" value="更新数据" @click="uu">
 	<h3>{{msg}}</h3>
-	<h3>{{b}}</h3>
 </div>
 
 </body>
@@ -37,12 +36,11 @@ http://www.cnblogs.com/GuliGugaLiz/p/7609103.html
 var vm1 = new Vue({
 	el:"#box",
 	data:{
-		msg: "钩子函数",
-		b: "ddd",			//在实例化后添加变量需要提前设置变量的值为null或者undefined，用来占位
+		msg: "11",
 	},
 	methods:{
-		update: function(){
-			this.msg='大家好';
+		uu: function(){					// 触发beforeUpdate和updated
+			this.msg = '33';
 		},
 	},
 	created: function(){
@@ -56,6 +54,7 @@ var vm1 = new Vue({
 	},
 	beforeUpdate: function(){
 		console.log('beforeUpdate组件更新之前');
+		alert(Math.random());
 	},
 	updated: function(){
 		console.log('updated组件更新完毕');
@@ -66,7 +65,7 @@ var vm1 = new Vue({
 });
 
 setTimeout(function() {
-	vm1.$data.b = 5;			// 触发beforeUpdate updated
+	vm1.$data.msg = 22;			// 触发beforeUpdate updated
 }, 1000);
 
 </script>

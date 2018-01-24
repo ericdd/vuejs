@@ -32,7 +32,7 @@ window.onload=function(){
 			msg:'welcome vue2.0'
 		},
 		methods:{
-			update: function(){
+			update: function(){		// 触发beforeUpdate和updated
 				this.msg='大家好';
 			},
 			destroy: function(){
@@ -40,28 +40,29 @@ window.onload=function(){
 			},
 		},
 		beforeCreate: function(){
-			console.log('组件实例刚刚被创建');
+			console.log('beforeCreate组件实例刚刚被创建');
 		},
 		created: function(){
-			console.log('实例已经创建完成');
+			console.log('created实例已经创建完成');
 		},
 		beforeMount: function(){
-			console.log('模板编译之前');
+			console.log('beforeMount模板编译之前');
 		},
 		mounted: function(){
-			console.log('模板编译完成');
+			console.log('mounted模板编译完成');
 		},
 		beforeUpdate: function(){
-			console.log('组件更新之前');
+			console.log('beforeUpdate组件更新之前');
+			alert(Math.random());
 		},
 		updated: function(){
-			console.log('组件更新完毕');
+			console.log('updated组件更新完毕');
 		},
 		beforeDestroy: function(){
-			console.log('组件销毁之前');
+			console.log('beforeDestroy组件销毁之前');
 		},
 		destroyed: function(){
-			console.log('组件销毁之后');
+			console.log('destroyed组件销毁之后');
 		}
 	});
 };
