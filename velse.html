@@ -15,8 +15,8 @@
 	<h1 v-if="age >= 25">Age: {{ age }}</h1>
 	<h1 v-else>Namdde: {{ name }}</h1>
 	<h1>---------------------分割线---------------------</h1>
-	<h1 v-show="name.indexOf('keep3') >= 0">Name: {{ name }}</h1>
-	<h1 v-else>Sex: {{sex}}</h1>
+	<h1 v-show="name.indexOf('z') >= 0">Name: {{ name }}</h1>
+	<h1 v-else>这个else不能被识别</h1>
 </div>
 
 </body>
@@ -26,7 +26,7 @@ var vm = new Vue({
 	el: '#app',
 	data: {
 		age: 2,
-		name: 'keepddfool',
+		name: 'keep',
 		sex: 'Male'
 	}
 })
