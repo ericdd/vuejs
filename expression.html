@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表达式</title>
+	</head>
+	<script src="js/vue.min.js"></script>
+	<style type="text/css">
+	#list1{color:red;}
+	</style>
+	<body>
+<pre>
+vue不能渲染两次,el为class也不行
+</pre>
+
+<div class="app">
+	{{5+4}}<br>
+	{{2*0.123456}}<br>
+	{{2*0.123456.toFixed(2)}}<br>
+	{{ ok ? 'YES' : 'NO' }}<br>
+	{{ message.split('') }}<br>
+	{{ message.split('').reverse().join('') }}
+	<div v-bind:id="'list' + id">菜鸟教程</div>
+</div>
+
+<hr />
+
+<div class="app">
+	{{4-44}}<br>
+	{{2*0.123456}}<br>
+	{{2*0.123456.toFixed(2)}}<br>
+	{{ ok ? 'YES' : 'NO' }}<br>
+	<div v-bind:id="'list' + id">菜鸟教程</div>
+</div>
+	
+<script>
+new Vue({
+  el: '.app',
+  data: {
+	ok: 0,
+    message: '999',
+	id : 1
+  }
+})
+</script>
+
+				
+	</body>
+
+
+</html>

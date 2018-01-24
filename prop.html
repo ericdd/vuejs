@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Prop</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+</style>
+</head>
+<body>
+
+
+
+<pre>
+
+Vue.component(tag, {
+	props: [],
+	template: str,
+})
+
+prop 是父组件用来传递数据的一个自定义属性。
+父组件的数据需要通过 props 把数据传给子组件，子组件需要显式地用 props 选项声明 "prop"：
+</pre>
+
+<hr />
+
+<div id="app">
+    <child msg="hello!,Vue"></child>
+</div>
+
+<script type="text/javascript">
+
+Vue.component('child', {
+  props: ['msg'],
+  template: '<h1>{{ msg }}</h1>'
+})
+
+new Vue({
+  el: '#app'
+})
+
+</script>
+
+
+			
+</body>
+
+
+</html>

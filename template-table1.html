@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>prop的绑定类型</title>
+<script src="js/vue.js"></script>
+<link rel="stylesheet" href="css/demo.css" />
+<style type="text/css">
+pre{padding:20px;}
+template{display:none;}
+table{margin:20px 0;}
+</style>
+</head>
+
+<body>
+
+<pre>
+prop的绑定类型：单向绑定
+http://www.cnblogs.com/keepfool/p/5625583.html#undefined
+</pre>
+
+<hr />
+
+<div id="app">
+
+	<table>
+		<tr>
+			<th colspan="3">父组件数据</td>
+		</tr>
+		<tr>
+			<td>{{ name }}</td>
+			<td><input type="text" v-model="name" /></td>
+		</tr>
+		<tr>
+			<td>{{ age }}</td>
+			<td><input type="text" v-model="age" /></td>
+		</tr>
+	</table>
+
+	<vv v-bind:my-name="name" v-bind:my-age="age"></vv>
+
+</div>
+
+<template id="myComponent">
+	<table>
+		<tr>
+			<th colspan="3">子组件数据</td>
+		</tr>
+		<tr>
+			<td>{{ myName }}</td>
+			<td><input type="text" v-model="myName" /></td>
+		</tr>
+		<tr>
+			<td>{{ myAge }}</td>
+			<td><input type="text" v-model="myAge" /></td>
+		</tr>
+	</table>
+</template>
+
+</body>
+
+	
+<script>
+	var vm = new Vue({
+		el: '#app',
+		data: {
+			name: 'keepfool',
+			age: 28
+		},
+		components: {
+			'vv': {
+				template: '#myComponent',
+				props: ['myName', 'myAge']
+			}
+		}
+	})
+</script>
+
+</html>

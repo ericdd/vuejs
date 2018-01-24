@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>组件</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+template{display:none;}
+</style>
+</head>
+<body>
+
+<pre>
+
+什么是组件：说白了，就是自定义标签。
+
+Vue.component(tag, {
+	props: [],
+	template: str,
+})
+
+组件可以扩展 HTML 元素，封装可重用的代码。
+</pre>
+
+<hr />
+
+<div id="app">
+    <vv></vv>
+	<t2></t2>
+	<t1></t1>
+
+</div>
+
+
+<script>
+
+// 全局组件 所有实例都能用全局组件。
+Vue.component('vv', {
+  template: '<h1>自定义组件!</h1>'
+})
+
+// 创建根实例
+new Vue({
+  el: '#app'
+})
+
+// 局部组件 我们也可以在实例选项中注册局部组件，这样组件只能在这个实例中使用：
+var cc = {
+  template: '<h2>Go 程序的性能优化及 pprof 的使用!</h2>'
+}
+ 
+new Vue({
+  el: '#app',
+  components: {
+    't2': cc,
+	't1' : { template: '<h2>无公害刺青瓜</h2>'}
+  }
+})
+
+</script>
+
+
+			
+</body>
+
+
+</html>

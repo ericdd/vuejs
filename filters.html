@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>管道符</title>
+	</head>
+	<style type="text/css">
+	
+	</style>
+	<script src="js/vue.min.js"></script>
+	<body>
+<pre>
+过滤器
+Vue.js 允许你自定义过滤器，被用作一些常见的文本格式化。由"管道符"指示
+过滤器可以串联
+过滤器是 JavaScript 函数，因此可以接受参数：
+</pre>
+
+<hr />
+
+<div id="app">
+  {{ message | capitalize | foo(2) }}
+</div>
+    
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    message: 'runoob'
+  },
+  filters: {
+    capitalize: function (value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    },
+	foo: function (v, a) {
+		return v + a + Math.random();
+	}
+  }
+})
+</script>
+
+				
+	</body>
+
+
+</html>

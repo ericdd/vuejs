@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="js/vue.min.js"></script>
+	<body>
+
+    <div class="app">
+        <input type="checkbox" id="jack" value="jack" v-model="checkedNames">
+        <label for="jack">jack</label>
+        <input type="checkbox" id="John" value="John"  v-model="checkedNames">
+        <label for="jack">John</label>
+        <input type="checkbox" id="Mike" value="Mike"  v-model="checkedNames">
+        <label for="jack">Mike</label>
+        <br>
+        <span>Checked names:{{checkedNames}}</span>
+    </div>
+    
+    
+<script>
+   new Vue({
+         el:'.app',
+         data:{
+             checkedNames:[]
+         }
+   })
+</script>
+
+				
+	</body>
+
+
+</html>

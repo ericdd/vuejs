@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>computed</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+#btn{width:100px;}
+
+</style>
+</head>
+<body>
+
+<pre>
+get和set函数都是data有变化时才触发
+
+</pre>
+
+<div id="d1">
+<input type="button" id="btn" value="确 定"/>
+<p id="p1">ddd</p>
+<p id="p2">eee</p>
+<p id="p3">fff</p>
+</div>
+
+<hr />
+
+<div id="demo">
+<div class="dd">{{firstName}}</div>
+<div class="dd">{{lastName}}</div>
+<div class="dd">{{fullName}}</div>
+</div>
+
+
+
+<script type="text/javascript">
+
+var vm = new Vue({
+	el:'#demo',
+	data: {
+		firstName: 'Foo',
+		lastName: 'Bar'
+	},
+	computed: {
+	  fullName: {
+		get: function () {				
+		 $("#p1").html("触发了get " + Math.random())
+		 return this.firstName + ' ' + this.lastName		// 这行不能少，返回fullName
+		},
+		set: function (newValue) {
+		  $("#p2").html("触发了set " + Math.random());	
+		  this.lastName = "rova";
+		}
+	  },
+	  firstName: {
+		get: function () {				
+			alert(11);
+		},
+		set: function (newValue) {
+			alert(22);
+		}
+	  }, 
+	}
+
+})
+
+
+$("#btn").click(function() {
+
+	$("#p3").html(vm.firstName +","+vm.lastName)		// 没有触发了get函数
+
+	vm.firstName = "这种"		// 这行触发了get
+
+	vm.fullName = "zz"		// 这行同时触发了get和set
+
+})
+
+
+
+</script>
+
+			
+</body>
+
+
+</html>

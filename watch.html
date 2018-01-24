@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>vue实例化后添加变量</title>
+<script src="js/vue.min.js"></script>
+<style type="text/css">
+div{border:1px solid red;margin:10px ;padding:10px;}
+</style>
+</head>
+
+<body>
+
+
+<div id="div1">
+	<p>{{a}}</p>
+	<p>{{b}}</p>
+</div>
+
+
+<div id="div2">
+	<p>{{aa}}</p>
+	<p v-on:click="Pclick">click{{todos[0]}}</p>
+	<p v-on:mouseover="Pmouseover">mouseover</p>
+</div>
+
+<script>
+
+var vm1 = new Vue({
+	el:"#div1",
+	data:{
+		a:1,
+		b:null//在实例化后添加变量需要提前设置变量的值为null或者undefined，用来占位
+	}
+});
+
+vm1.$data.b = 5;
+
+
+var vm2 = new Vue({
+	el:"#div2",
+	data:{
+		todos:["1111","222222"],
+		aa:1
+	},
+	// 添加事件
+	methods:{
+		Pclick:function(e){
+			alert(e.target.innerHTML);//获取当前点击元素的内容
+		},
+		Pmouseover:function(){
+			console.log(2)//mouseover事件
+			this.aa++
+		}
+	},
+
+	// 监听数据a的变化
+	watch:{
+		//后面跟个方法，参数一是变化后的值，参数二为变化之前的值
+		"aa":function(newVal,oldVal){
+			console.log(newVal,oldVal);
+		}
+	}
+})
+
+</script>
+
+
+</html>

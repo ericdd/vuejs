@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>v-bind</title>
+</head>
+<script src="js/vue.min.js"></script>
+
+<style type="text/css">
+img{width:200px;}
+</style>
+
+</head>
+<body>
+
+v-bind主要用于属性绑定，Vue官方提供了一个简写方式 :bind
+
+</pre>
+<hr />
+
+<div id="box">
+	<img class="box" :src="url"  v-bind:title="bb">
+	<img class="box" :src="url1" >
+</div>
+
+</body>
+
+<script>
+        
+var vm= new Vue({
+    el:'#box',
+    data:{
+        url:'img/0.jpg',
+		url1:'img/1.jpg',
+		bb:"这是图片"
+    }
+})
+</script>
+
+</html>

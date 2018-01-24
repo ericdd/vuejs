@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>style</title>
+</head>
+<script src="js/vue.min.js"></script>
+<body>
+<pre>
+v-bind:style 可以使用数组将多个样式对象应用到一个元素上：
+</pre>
+
+
+<div id="app">
+  <div v-bind:style="styleObject">菜鸟教程</div>
+</div>
+    
+<div id="app2">
+  <div v-bind:style="[baseStyles, overridingStyles]">菜鸟教程</div>
+</div>
+
+    
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    styleObject: {
+      color: 'green',
+      fontSize: '30px'
+    }
+  }
+})
+
+new Vue({
+  el: '#app2',
+  data: {
+    baseStyles: {
+      color: 'red',
+      fontSize: '30px'
+    },
+	overridingStyles: {
+      'font-weight': 'bold'
+    }
+  }
+})
+
+</script>
+
+				
+	</body>
+
+
+</html>

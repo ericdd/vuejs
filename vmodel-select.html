@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>用v-model 指令在表单控件元素上创建双向数据绑定</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+</style>
+</head>
+<body>
+
+<div id="app">
+  <select v-model="selected" name="fruit">
+    <option value="">选择一个网站</option>
+    <option value="www.runoob.com">Runoob</option>
+    <option value="www.google.com">Google</option>
+  </select>
+ 
+  <div id="output">
+      选择的网站是: {{selected}}
+  </div>
+
+  <hr />
+
+  <input type="radio" id="runoob" value="Runoob" v-model="picked">
+  <label for="runoob">Runoob</label>
+  <br>
+  <input type="radio" id="google" value="Google" v-model="picked">
+  <label for="google">Google</label>
+  <br>
+  <span>选中值为: {{ picked }}</span>
+
+
+</div>
+    
+    
+<script>
+
+new Vue({
+  el: '#app',
+  data: {
+	selected: '' ,
+	picked : 'Runoob',
+  }
+})
+
+</script>
+
+				
+	</body>
+
+
+</html>

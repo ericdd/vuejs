@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>v-for</title>
+    </head>
+    <script src="js/vue.min.js"></script>
+    <body>
+<pre>
+v-for指令基于一个数组渲染一个列表，它和JavaScript的遍历语法相似：
+
+v-for="item in items"
+items是一个数组，item是当前被遍历的数组元素。
+
+vue.js渲染完成后，想触发一些事情，写在哪里呢？
+
+答案是mounted
+
+</pre>
+<hr />
+
+<div id="app">
+
+{{arr.length}}
+
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Sex</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr :index="ind" v-for="(person, ind) in arr">
+				<td>{{ind}}-{{person.name}}</td>
+				<td>{{person.age}}</td>
+				<td>{{person.sex}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
+
+</body>
+<script>
+var vm = new Vue({
+		el: '#app',
+		data: {
+			name: "pre",
+			age: 1,
+			arr: [{
+				name: '小明',
+				age: 30,
+				sex: 'Male'
+			}, {
+				name: '小红',
+				age: 26,
+				sex: 'Male'
+			}, {
+				name: 'Tracy',
+				age: 22,
+				sex: 'Female'
+			}, {
+				name: 'Chris',
+				age: 36,
+				sex: 'Male'
+			}]
+		},  
+	  mounted:function(){
+		//alert('render complete')
+	  }
+	})
+</script>
+</html>

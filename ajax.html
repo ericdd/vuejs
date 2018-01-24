@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ajax</title>
+</head>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/vue.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+li{border:1px solid #ccc;padding:10px;}
+</style>
+<body>
+<pre>
+在VUE开发时，数据可以使用jquery和vue-resource来获取数据。在获取数据时，一定需要给一个数据初始值。
+</pre>
+
+
+<div id="box">
+	<ul class="demo">
+	  <li v-for="value in data">
+		{{ value }}
+	  </li>
+	</ul>
+
+	<ul class="demo" click="alert(2)">
+		<li v-for="(value, key) in data">
+		  {{ key }} : {{ value }}
+		</li>
+	</ul>
+
+	<!-- 第三个参数作为索引(index) -->
+	<ul class="demo" id="ul1">
+		<li v-for="(value, key, index) in data" >
+		  {{ index }}. {{ key }} : {{ value }}
+		</li>
+	</ul>
+</div>
+
+
+<script type="text/javascript">
+
+
+new Vue({
+	el:'#box',
+	data:{data:""},
+
+	beforeCreate:function(){
+		var url="ajax/test.php";
+		var _self=this;
+		$.get(url,function(data){
+			_self.data = eval("(" + data +")");
+			console.info(data);
+			console.log(_self.data);
+		})
+	}
+  });
+
+
+</script>
+				
+	</body>
+
+
+</html>

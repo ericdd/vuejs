@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>自定义事件</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+template{display:none;}
+</style>
+</head>
+<body>
+
+
+
+<pre>
+自定义事件
+父组件是使用 props 传递数据给子组件，但如果子组件要把数据传递回去，就需要使用自定义事件！
+我们可以使用 v-on 绑定自定义事件, 每个 Vue 实例都实现了事件接口(Events interface)，即：
+使用 $on(eventName) 监听事件
+使用 $emit(eventName) 触发事件
+另外，父组件可以在使用子组件的地方直接用 v-on 来监听子组件触发的事件。
+</pre>
+
+<hr />
+
+<div id="app">
+    <div id="box1">
+      <p>{{ total }}</p>
+      <bnn @aa="m2"></bnn>
+      <bnn v-on:aa="m2"></bnn>
+	  <bnn></bnn>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+Vue.component('bnn', {
+  template: '<button v-on:click="m1">{{ cc }}</button>',
+  data: function () {
+    return {
+      cc: 0
+    }
+  },
+  methods: {
+    m1: function () {
+      this.cc += 1
+      this.$emit('aa')		//触发父组件的m2方法
+    }
+  },
+})
+
+new Vue({
+  el: '#box1',
+  data: {
+    total: 0
+  },
+  methods: {
+    m2: function () {
+	  document.title = Math.random();
+      this.total += 2
+    }
+  }
+})
+
+</script>
+
+
+			
+</body>
+
+
+</html>

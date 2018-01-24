@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>vue.js之获取当前点击对象</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+img{height:200px;}	
+</style>
+</head>
+<body>
+
+<pre>
+vue.js之获取当前点击对象
+currentTarget 你的点击事件绑定在哪一个元素上，currentTarget获取到的就是哪一个元素。
+target: 就是你当前点击的是哪一个元素，target获取到的就是哪一个元素。
+</pre>
+<hr />
+
+<div id="test">
+	<img v-bind:src="w" :title="q"><br />
+
+	<p @click="update(event)"><a href="#">更改w图片</a></p>
+	<p><a @click="update($event,s)" href="#">更改为s图片</a></p>
+
+</div>
+
+<script type="text/javascript">
+
+new Vue({
+  el: '#test',
+  data: {
+	q: "baidu.com",
+	w: "img/1.jpg", 
+	s: "img/2.jpg",
+	},
+  methods: {
+	update: function(e,aa){
+	  if(!aa) aa = "img/0.jpg";
+	  this.w = aa
+	  console.log(e.currentTarget);
+      console.log(e.target);
+	}
+  }
+})
+
+</script>
+
+
+			
+</body>
+
+
+</html>

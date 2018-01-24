@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>vue路由</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/vue-router.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+.router-link-active{
+	background: #ccc;
+	padding: 5px;
+	text-decoration: none;
+}
+</style>
+</head>
+<body>
+
+<pre>
+
+
+
+vue的单页面应用是基于路由和组件的，路由用于设定访问路径，并将路径和组件映射起来。
+传统的页面应用，是用一些超链接来实现页面切换和跳转的。
+在vue-router单页面应用中，则是路径之间的切换，也就是组件的切换。
+
+单页面应用需要在页面不刷新的情况下，通过更改地址栏url实现不同路由的切换，有两个api可以使用：
+
+采用 location.hash 实现hash(#号)URL路由判断
+采用 HTML5中的 history.pushState() 方法
+两种方式各有特点，第一个兼容性较好，可以在各种浏览器中运行，但是URL中会有一个#,看起来不好看，第一个是HTML5属性，只能在现代浏览器中运行；
+
+vue-router有两种模式，hash模式和history模式
+
+</pre>
+
+<hr />
+
+<div id="box">
+	<div>
+		<router-link to="/home">主页</router-link>
+		<router-link to="/news">新闻</router-link>
+		<router-link to='/about'>关于</router-link>
+	</div>
+	<div>
+		<router-view></router-view>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+//组件
+const Home = {
+	template:'<h3>我是主页</h3>'
+};
+const News = {
+	template:'<h3>我是新闻</h3>'
+}
+const About = {
+	template:'<h3>我是关于</h3>'
+}
+//配置路由
+const routes = [ 
+	{path:'/home', component :Home},
+	{path:'/news', component:News},
+	{path:'/about',component:About},
+	//重定向
+	{path:'*',redirect:'/home'}
+]
+//生成路由实例
+const router = new VueRouter({
+	routes
+})
+//挂载到vue上
+new Vue({
+	router,
+	el:'#box'
+})
+
+</script>
+
+
+			
+</body>
+
+
+</html>

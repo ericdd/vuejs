@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-for同时遍历连个数组</title>
+	</head>
+	<script src="js/vue.min.js"></script>
+	<style type="text/css">
+
+	</style>
+	<body>
+<pre>
+v-for同时遍历连个数组
+</pre>
+
+<ul id="example-1">
+  <li v-for="(v,index) in fruit">
+   {{index}} {{ v.cc }}--{{workers[index]['name']}}
+  </li>
+</ul>
+	
+<script>
+
+var vm = new Vue({
+  el: '#example-1',
+  data: {
+    fruit: [
+      {cc: 'apple' },
+      {cc: 'peach' },
+    ],
+    workers:[
+      {name:'eric'},
+      {name:"nolan"},
+    ]
+  }
+})
+
+//vm.$data.fruit.append({cc: 'peadch' })
+//vm.$data.workers.append({name: 'pedach' })
+//console.log(vm.$data.fruit);
+
+
+</script>
+
+				
+	</body>
+
+
+</html>

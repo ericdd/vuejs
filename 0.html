@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>test</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+</style>
+</head>
+<body>
+
+
+
+<pre>
+两者无论谁被改变，另一方也会相应的更新为相同的数据
+</pre>
+
+        <div id="app">
+            <my-component></my-component>
+        </div>
+        
+        <template id="myComponent">
+            <div>This is a component!dd</div>
+        </template>
+
+<script type="text/javascript">
+
+        Vue.component('my-component',{
+            template: '#myComponent'
+        })
+        
+        new Vue({
+            el: '#app'
+        })
+
+</script>
+
+
+			
+</body>
+
+
+</html>

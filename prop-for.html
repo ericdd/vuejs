@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Prop-for</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+</style>
+</head>
+<body>
+
+
+
+<pre>
+动态 Prop
+类似于用 v-bind 绑定 HTML 特性到一个表达式，也可以用 v-bind 动态绑定 props 的值到父组件的数据中。
+每当父组件的数据变化时，该变化也会传导给子组件：
+</pre>
+
+<hr />
+
+<div id="app">
+    <ol>
+	 <aa v-for="(item, index) in sites" v-bind:todo="item"></aa>
+    </ol>
+</div>
+
+
+<script type="text/javascript">
+
+Vue.component('aa', {
+  props: ['todo'],
+  template: '<li>{{ todo.text }}</li>'
+})
+
+new Vue({
+  el: '#app',
+  data: {
+    sites: [
+      { text: 'Runoob' },
+      { text: 'Google' },
+      { text: 'Taobao' }
+    ]
+  }
+})
+
+</script>
+
+
+			
+</body>
+
+
+</html>

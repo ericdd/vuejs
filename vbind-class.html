@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>v-bind</title>
+    </head>
+    <script src="js/vue.min.js"></script>
+    <body>
+	<style type="text/css">
+	.box{border:1px dashed #f0f;}
+	.cc{ color:#f00; background-color:#eef;}
+	.ss{font-size:20px; font-weight:bold;}
+	</style>
+<pre>
+
+v-bind主要用于属性绑定，Vue官方提供了一个简写方式 :bind
+
+</pre>
+<hr />
+
+<ul class="box" :aa="a1" v-bind:class="{'cc':isColor, 'ss':isSize}">
+    <li>学习Vue</li>
+    <li>学习Node</li>
+    <li>学习React</li>
+</ul>
+
+<!-- 可以直接绑定数据里的一个对象 -->
+<ul class="box1" :class="classObject">
+    <li>学习Vue</li>
+    <li>学习Node</li>
+    <li>学习React</li>
+</ul>
+
+<!-- 数组语法 -->
+<ul class="box2" :class="[classA,classB]">
+    <li>学习Vue</li>
+    <li>学习Node</li>
+    <li>学习React</li>
+</ul>
+
+<ul class="box3" :class="[isA ? classA : '', classB]">
+    <li>学习Vue</li>
+    <li>学习Node</li>
+    <li>学习React</li>
+</ul>
+
+</body>
+
+    <script>
+        
+var vm= new Vue({
+    el:".box",
+    data:{
+        isColor:true,
+        isSize:true,
+		a1: "ccccc",
+    }
+})
+
+var vm= new Vue({
+    el:'.box1',
+    data:{
+        classObject:{
+            'cc':true,
+            'ss':false 
+        }
+    }
+})
+
+var vm= new Vue({
+    el:'.box2',
+    data:{
+        classA:'cc',
+        classB:'ss'
+    }
+})
+
+var vm= new Vue({
+    el:'.box3',
+    data:{
+        classA:'cc',
+        classB:'ss',
+        isA:false 
+    }
+})
+
+    </script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+	<script src="js/vue.min.js"></script>
+</head>
+
+<body>
+	<!--这是我们的View-->
+	<div id="app" class="ee">
+		<div id="app2" class="ff">
+			<h3>{{ name }}</h3>
+			<h3>{{ age }}</h3>
+			<h3>{{ city }}</h3>	
+			<h3>{{ aa }}</h3>
+		</div>
+
+	</div>
+
+</body>
+
+<script>
+
+// 这是我们的Model
+var exampleData = {
+	name: '小米',
+	age: Math.random(),
+	city: "深圳",
+	aa: "bbb",
+}
+
+
+var vm = new Vue({
+	el: '.ff',
+	data: exampleData
+})
+
+//vue实例化后添加变量 vue实例化后在外部添加数据需要提前占位，使用 $data 方法添加
+//vm.aa = "aa";
+vm.$data.aa = 5;
+
+console.log(vm);
+
+</script>
+</html>

@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>computed。</title>
+	</head>
+	<script src="js/vue.min.js"></script>
+	<body>
+<pre>
+计算属性关键词: computed。
+</pre>
+<hr />
+
+<div id="app">
+  <p>原始字符串: {{ message }}</p>
+  <p>计算后反转字符串: {{ message2 }}</p>
+</div>
+    
+<script type="text/javascript">
+var vm = new Vue({
+  el: '#app',
+  data: {
+    message: 'Runoob!'
+  },
+  computed: {
+    // 计算属性的 getter
+    message2: function () {
+      // `this` 指向 vm 实例
+      return this.message.split('').reverse().join('')
+    }
+  }
+})
+</script>
+
+				
+	</body>
+
+
+</html>

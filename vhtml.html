@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>v-html</title>
+    </head>
+	<script src="js/vue.min.js"></script>
+    <body>
+<pre>
+操作元素中的HTML标签
+v-html会将元素当成HTML标签解析后输出
+</pre>
+<hr />
+
+<div id="box">
+
+	<div id="app">
+		<div v-html="message"></div>
+	</div>
+
+	<div id="app2">
+		{{ message }}
+	</div>
+
+	<div id="app3" v-html="message"></div>
+
+</div>
+
+
+
+<script>
+new Vue({
+  el: '#box',
+  data: {
+    message: '<h1>菜鸟教程</h1>'
+  }
+})
+
+ 
+</script>
+
+</html>

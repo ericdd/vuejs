@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>vue的生命周期，钩子函数</title>
+	<script src="js/vue.min.js"></script>
+</head>
+
+<body>
+
+<pre>
+vue的生命周期，钩子函数
+
+它可以总共分为8个阶段：
+beforeCreate（创建前）,
+created（创建后）,
+beforeMount(载入前),
+mounted（载入后）,
+beforeUpdate（更新前）,
+updated（更新后）,
+beforeDestroy（销毁前）,
+destroyed（销毁后）
+
+http://www.cnblogs.com/GuliGugaLiz/p/7609103.html
+</pre>
+
+<div id="box">
+	<input type="button" value="更新数据" @click="update">
+	<h3>{{msg}}</h3>
+	<h3>{{b}}</h3>
+</div>
+
+</body>
+
+<script>
+
+var vm1 = new Vue({
+	el:"#box",
+	data:{
+		msg: "钩子函数",
+		b: "ddd",			//在实例化后添加变量需要提前设置变量的值为null或者undefined，用来占位
+	},
+	methods:{
+		update: function(){
+			this.msg='大家好';
+		},
+	},
+	created: function(){
+		console.log('created');
+	},
+	beforeMount: function(){
+		console.log('beforeMount模板编译之前');
+	},
+	mounted: function(){
+		console.log('mounted模板编译完成');
+	},
+	beforeUpdate: function(){
+		console.log('beforeUpdate组件更新之前');
+	},
+	updated: function(){
+		console.log('updated组件更新完毕');
+	},
+	destroyed: function(){
+		console.log('destroyed');
+	},
+});
+
+setTimeout(function() {
+	vm1.$data.b = 5;			// 触发beforeUpdate updated
+}, 1000);
+
+</script>
+</html>

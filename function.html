@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表达式</title>
+	</head>
+	<script src="js/vue.min.js"></script>
+	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	<style type="text/css">
+	#list1{color:red;}
+	</style>
+	<body>
+<pre>
+Vue.js 都提供了完全的 JavaScript 表达式支持。
+</pre>
+
+<div id="app">
+	{{5+4}}<br>
+	{{2*0.123456}}<br>
+	{{2*0.123456.toFixed(2)}}<br>
+	{{ ok ? 'YES' : 'NO' }}<br>
+	{{ message.split('') }}<br>
+	{{ message.split('').reverse().join('') }}
+	<div v-bind:id="'list' + id">菜鸟教程</div>
+</div>
+	
+<script type="text/javascript">
+new Vue({
+  el: '#app',
+  data: {
+	ok: true,
+    message: 'RUNOOB',
+	id : 1
+  }
+})
+</script>
+
+				
+	</body>
+
+
+</html>

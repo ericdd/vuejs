@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>v-model</title>
+<script src="js/vue.min.js"></script>
+
+</head>
+
+<body>
+
+<pre>
+在Vue.js中可以使用v-model指令在表单元素上创建双向数据绑定。
+</pre>
+<hr />
+
+<!--这是我们的View-->
+<div id="app">
+	<p>{{ kk }}</p>
+	<input type="text" v-model="kk"/>
+
+	<p>{{ product.enterpriseName }}</p>
+	<input type="text" name="email" v-model="product.enterpriseName" placeholder="请输入邮箱" />
+</div>
+
+</body>
+
+<script>
+
+// 这是我们的Model
+var exampleData = {
+	ww: 'abcdd',
+	kk: 123,
+	product:{
+		enterpriseName: "新的软件公司",
+		message: {
+			employeeId: 2,
+			employeeTime: "2017-08-22 00:00:00",
+			isPromote: true
+		}
+	}
+}
+
+// 创建一个 Vue 实例或 "ViewModel"
+// 它连接 View 与 Model
+new Vue({
+	el: '#app',
+	data: exampleData
+})
+
+</script>
+</html>

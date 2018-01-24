@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>emit</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+template{display:none;}
+</style>
+</head>
+<body>
+
+<pre>
+自定义事件
+vm.$emit( event, […args] )
+参数：
+{string} event
+[...args]
+触发当前实例上的事件。附加参数都会传给监听器回调。
+</pre>
+
+<hr />
+
+<div id="app">
+	<p>{{ total }}</p>
+	<bb @increment1="m2"></bb>
+	<bb v-on:increment2="m2"></bb>
+</div>
+
+
+<script type="text/javascript">
+
+Vue.component('bb',{
+	template:'<button @click="foo">{{ counter }}</button>',
+	data:function(){
+		return {counter: 0}					//组件数据就是这样的，函数式的，请注意
+	},
+	methods:{
+		foo:function(){
+			this.counter += 1;
+			this.$emit('increment1',[Math.random(),'kkk']); 	//触发父组件的m2方法
+		}
+	}
+});
+
+new Vue({
+	el:'#app',
+	data:{
+		total:0
+	},
+	methods:{
+		m2:function(e){
+			this.total += 2;
+			console.log(e);
+		}
+	}
+});
+
+</script>
+
+
+			
+</body>
+
+
+</html>

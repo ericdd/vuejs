@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>is</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+</style>
+</head>
+<body>
+
+<pre>
+is 属性容错处理
+</pre>
+
+<hr />
+
+<div id="app">
+    <ul>
+        <my-comp></my-comp>
+		<li is="my-comp"></li>
+        <li is="myComp2"></li>
+		<li is="my-comp2"></li>
+        <my-comp2></my-comp2>
+		<rr :is='vv'></rr>	<!-- :不能少 -->
+    </ul>
+</div>
+
+
+<script type="text/javascript">
+
+new Vue({
+ el:'#app',
+ data:{
+	 vv:'myComp2'
+ },
+ components:{
+	 'myComp':{
+		 template:'<li>这个是个li</li>'
+	 },
+	 'myComp2':{
+		 template:'<p>这个是个p, '+Math.random()+'</p>'
+	 }
+ },
+})
+
+//Vue.component("myComp",{
+//	template : "<li>这个是个li</li>"
+//});
+//Vue.component("myComp2",{
+//	template : "<p>这个是个p</p>"
+//});
+//
+//var app = new Vue({
+//}).$mount("#app");
+
+
+
+</script>
+
+
+			
+</body>
+
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>给组件添加事件</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+</style>
+</head>
+<body>
+
+
+
+<pre>
+给组件添加事件
+</pre>
+
+<hr />
+
+<div id="box">
+	<aaa></aaa>
+</div>
+
+<script type="text/javascript">
+
+Vue.component('aaa',{
+	data: function () {
+		return {
+			msg:'我是p标签'
+		};
+	},
+	methods:{
+		sj:function(){
+			alert(111);
+		}
+	},
+	template:'<p @click="sj()">{{msg}}</p>'    //接收的data值必须是函数的形式，函数必须返回一个对象
+})
+
+new Vue({
+	el:'#box',
+	data:{
+		
+	},
+})
+
+</script>
+
+
+			
+</body>
+
+
+</html>

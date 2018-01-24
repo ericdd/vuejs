@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>v-on</title>
+</head>
+<script src="js/vue.min.js"></script>
+<style type="text/css">
+img{height:200px;}	
+</style>
+<body>
+<pre>
+v-on 指令用于监听DOM事件 形式如：v-on:click  缩写为 @click;
+</pre>
+
+
+<div id="test">
+	<img v-bind:src="w" :title="q"><br />
+
+	<p><a v-on:click="update()" href="#">更改{{q}}图片</a></p>
+	<p><a @click="update(s)" href="#">更改为s图片</a></p>
+
+</div>
+
+<script type="text/javascript">
+
+new Vue({
+  el: '#test',
+  data: {
+	q: "baidu.com",
+	w: "img/1.jpg", 
+	s: "img/2.jpg",
+	},
+  methods: {
+	update: function(aa){
+	  if(!aa) aa = "img/0.jpg";
+	  this.w = aa
+	}
+  }
+})
+
+  </script>
+
+				
+	</body>
+
+
+</html>

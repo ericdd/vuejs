@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Vue三元运算符</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+pre{padding:20px;}
+template{display:none;}
+button{width:100px;padding:10px;}
+.bsecondary{color:blue;}
+.bsuccess{color:red;}
+</style>
+</head>
+<body>
+
+<pre>
+可以使用 props 把数据传给子组件。
+
+在子组件中定义prop时，使用了camelCase命名法。由于HTML特性不区分大小写，camelCase的prop用于特性时，需要转为 kebab-case（短横线隔开）。
+例如，在prop中定义的myName，在用作特性时需要转换为my-name。
+
+http://www.cnblogs.com/keepfool/p/5625583.html#undefined
+</pre>
+
+<hr />
+
+<div id="app">
+	<p>{{age}}</p>
+	<vv :aa="text" :bb="age" @cc="m1"></vv>
+</div>
+
+
+<template id="myComponent">
+    <button type="button" class="btn bsm" v-text="aa" :class="bb ? 'bsuccess':'bsecondary'" @click="follow">
+    </button>
+</template>
+
+<script type="text/javascript">
+
+var vm = new Vue({
+	el: '#app',
+	data: {
+		age: 0,
+		text:'三元运算符',
+	},
+	methods: {
+		m1: function () {
+			this.age = !this.age
+			alert(2);
+		}
+	},
+	components: {
+		'vv': {
+			template: '#myComponent',
+			props: ['aa', 'bb'],							// props是写在标签vv里的
+			methods:{
+				follow:function(){		
+					document.title = this.bb
+					//this.bb = !this.bb
+					this.$emit('cc',[Math.random(),'kkk']);		//触发父组件的m1方法
+				}
+			}
+		}
+
+	}
+})
+</script>
+
+
+			
+</body>
+
+
+</html>

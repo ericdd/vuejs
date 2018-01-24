@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title> Vue.js与Jquery</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+#app{margin:20px 0;}
+</style>
+</head>
+<body>
+
+
+<pre>
+Vue 的官方是不建议直接操作 DOM 的，其优势在于视图和数据的双向绑定，而且所有DOM操作都可以用Vue实现，反而使用jQuery来操作DOM的话，会造成不必要的麻烦，
+DOM未渲染完成之前事件绑定不上，当然也有解决办法，比如setTimeOut
+</pre>
+
+<hr />
+
+<div id="output"></div>  
+<button id="increment">jquery Increment</button>  
+
+<div id="app">  
+  <div>{{ counter }}</div>  
+  <button @click="aa">vue Increment</button>  
+</div>  
+
+
+<script type="text/javascript">
+
+// jquery方法
+var counter = 0;  
+$(document).ready(function() {  
+var $output = $('#output');    
+
+$('#increment').click(function() {  
+  counter++;  
+  $output.html(counter);  
+}); 
+
+$output.html(counter);  
+});  
+
+// vue方法
+new Vue({  
+	el: '#app',  
+	data: {  
+	  counter: 0  
+	},  
+
+	methods:{
+		aa: function(){
+		this.counter ++;
+		},
+	}	
+});  
+
+</script>
+
+
+			
+</body>
+
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>v-show</title>
+    </head>
+    <script src="js/vue.min.js"></script>
+    <body>
+<pre>
+age大于30就显示
+</pre>
+<hr />
+
+        <div id="app">
+			<input type="text" v-model="age"/>
+            <h1 v-show="no">No!</h1>
+            <h1 v-show="age >= 30">Age: {{ age }}</h1>
+        </div>
+    </body>
+    <script>
+   var vm = new Vue({
+            el: '#app',
+            data: {
+                no: false,
+                age: 28,
+            },
+			watch:{
+				"age":function(newVal,oldVal){
+					this.no = newVal >= 20 ? false : true;
+				}
+			}
+
+        })
+    </script>
+</html>

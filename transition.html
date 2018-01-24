@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>transition</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+.fade-enter{  opacity:0;}
+.fade-enter-active{  transition:opacity .5s;}
+.fade-leave-active{  transition:transform .5s;}
+.fade-leave-to{  transform:translateX(10px);}
+
+.bounce-enter-active{  animation:bounce-in .5s;}
+.bounce-leave-active{  animation:bounce-in .5s reverse;}
+@keyframes bounce-in{  0%{transform:scale(0);}  50%{transform:scale(1.5);}  100%{transform:scale(1);}}
+
+</style>
+</head>
+<body>
+
+<pre>
+Vue过渡效果之CSS过渡
+
+http://www.cnblogs.com/xiaohuochai/p/7383979.html
+
+</pre>
+
+
+
+<div id="demo">
+  <button v-on:click="show = !show">Toggle</button>
+  <p v-if="show">小火柴的蓝色理想</p>
+
+  <transition name="fade" :duration="3000">
+    <p v-if="show">小火柴的蓝色理想</p>
+  </transition>
+
+  <transition name="bounce">
+    <p v-if="show">小火柴的蓝色理想</p>
+  </transition>
+
+</div>
+
+<script>
+new Vue({
+  el: '#demo',
+  data: {
+    show: true
+  }
+})
+</script>
+
+
+			
+</body>
+
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>template</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<link rel="stylesheet" href="css/demo.css" />
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+pre{padding:20px;}
+template{display:none;}
+table{margin:20px 0;}
+
+</style>
+</head>
+<body>
+
+<pre>
+可以使用 props 把数据传给子组件。
+
+在子组件中定义prop时，使用了camelCase命名法。由于HTML特性不区分大小写，camelCase的prop用于特性时，需要转为 kebab-case（短横线隔开）。
+例如，在prop中定义的myName，在用作特性时需要转换为my-name。
+
+http://www.cnblogs.com/keepfool/p/5625583.html#undefined
+</pre>
+
+<hr />
+
+<div id="app">
+	<vv :aa="name1" v-bind:my-age="age"></vv>
+</div>
+
+
+<template id="myComponent">
+	<table>
+		<tr>
+			<th colspan="2">
+				子组件数据
+			</th>
+		</tr>
+		<tr>
+			<td>my name</td>
+			<td>{{ aa }}</td>
+		</tr>
+		<tr>
+			<td>my age</td>
+			<td>{{ myAge }}</td>
+		</tr>
+	</table>
+</template>
+
+<script type="text/javascript">
+
+var vm = new Vue({
+	el: '#app',
+	data: {
+		name1: 'keepfool',
+		age: 28
+	},
+	components: {
+		'vv': {
+			template: '#myComponent',
+			props: ['aa', 'myAge']			// props是写在标签vv里的
+		}
+	}
+})
+</script>
+
+
+			
+</body>
+
+
+</html>
