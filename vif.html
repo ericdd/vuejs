@@ -5,6 +5,10 @@
 <title>v-if</title>
 </head>
 <script src="js/vue.min.js"></script>
+<style type="text/css">
+*{padding:0;}
+h2{margin:5px 0;}
+</style>
 <body>
 <pre>
 v-if指令
@@ -16,13 +20,15 @@ expression是一个返回bool值的表达式，表达式可以是一个bool属�
 <hr />
 
 <div id="app">
-	<h1 v-if="yes">Yes!</h1>
-	<h1 v-if="no">No!</h1>
-	<h1 v-if="no==false">no==false</h1>
-	<h1 v-if="n == 1 | m==2">n</h1>
-	<h1 v-if="age >= 25">Age: {{ age }}</h1>
-	<h1 v-if="name.indexOf('jack') >= 0">i am jack</h1>
-	<h1 v-show="no">show no</h1>
+	<h2 v-if="yes">Yes!</h2>
+	<h2 v-if="no">No!</h2>
+	<h2 v-if="no==false">no==false</h2>
+	<h2 v-if="n == 1 | m==2">n</h2>
+	<h2 v-if="n == 1 & m==2">m</h2>
+	<h2 v-if="n == 1 & m==12">m+</h2>
+	<h2 v-if="age >= 25">Age: {{ age }}</h2>
+	<h2 v-if="name.indexOf('jack') >= 0">i am jack</h2>
+	<h2 v-show="no">show no</h2>
 </div>
 
 </body>
