@@ -19,10 +19,11 @@ expression是一个返回bool值的表达式，表达式可以是一个bool属�
 	<h1>Hello, Vue.js!</h1>
 	<h1 v-if="yes">Yes!</h1>
 	<h1 v-if="no">No!</h1>
-	<h1 v-show="no">No!!!</h1>
-	<h1 v-if="mre == '默认'">ddd</h1>
+	<h1 v-if="no==false">No!</h1>
+	<h1 v-if="n == 1 | m==2">n</h1>
 	<h1 v-if="age >= 25">Age: {{ age }}</h1>
-	<h1 v-if="name.indexOf('jack') >= 0">Name: {{ name }}</h1>
+	<h1 v-if="name.indexOf('jack') >= 0">i am jack</h1>
+	<h1 v-show="no">show no</h1>
 </div>
 
 </body>
@@ -34,8 +35,9 @@ var vm = new Vue({
 		yes: true,
 		no: false,
 		age: 28,
-		mre : "默认",
-		name: 'jackdd'
+		n : "1",
+		m : "2",
+		name: 'jack'
 	}
 })
 </script>
