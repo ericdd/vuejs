@@ -59,7 +59,8 @@ var vm = new Vue({
 				name: '小明',
 				age: 30,
 				sex: 'Male'
-			},{
+			},
+			{
 				name: 'Chris',
 				age: 36,
 				sex: 'Male'
@@ -74,8 +75,8 @@ var vm = new Vue({
 		}
 	})
 
-vm.$watch('arr', function (nv, ov) {
-    alert(Math.random());
+vm.$watch('arr', function (nv, ov) {		// 不执行
+    alert("arr ". Math.random());
 })
 
 vm.$watch('jj.a', function (nv, ov) {
