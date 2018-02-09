@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>v-for select</title>
+</head>
+<script src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+
+div{margin:20px 50px;}
+select{padding:5px 5px;min-width:150px;font-size:14px;display:block;}
+input{padding:7px;}
+
+</style>
+<body>
+<pre>
+
+</pre>
+
+<div id="app">
+
+	<select v-model="selected" @change='foo'>
+		<option v-for="(val, index) in fruit" :value="val.id" :index=index>{{val.name}}</option>
+	</select>
+
+	<p>	<input v-model="selected" placeholder="edit me"></p>
+	<p>selected: {{selected}}, text: {{text}}</p> 
+	<p v-show="open">这是一段隐藏的内容</p>
+
+</div>	
+
+<div id="app1">
+
+	<select v-model="selected">
+		<option v-for="v in txt" :value="v.value">{{ v.text }}</option>
+	</select>
+	
+	<p>{{ selected.text }}</p>
+
+</div>	
+
+
+<script>
+
+
+new Vue({
+	el: '#app',
+	watch: {
+		selected: function (val) {
+			this.open = val == 2 ? true : false;
+		}
+	},
+
+	data: {
+		selected: 2,
+		text: '',
+		fruit: [
+			{id: 4, name: 'apple4'}, 
+			{id: 2,	name: 'peach2'},
+			{id: 3,	name: 'orange3'},
+		],
+
+	},
+	methods:{
+		foo: function(ele){
+			 var txt = $(ele.target).find("option:selected").text();  
+			 var val = ele.target.value;  
+			 this.text = txt;
+			 console.log(txt, val);				
+		},
+	}
+})
+
+var vm = new Vue({
+    el: '#app1',
+	data: {
+		selected: {},
+		text: '',
+		txt: [
+			{ value: 1, text: 'some text' },
+			{ value: 2, text: 'some other text' },
+			{ value: 3, text: 'some more text' },
+		],
+
+	},
+})
+
+console.log(vm.txt);
+
+
+</script>
+
+</body>
+
+</html>
