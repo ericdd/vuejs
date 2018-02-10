@@ -20,24 +20,13 @@ input{padding:7px;}
 </pre>
 
 <div id="app">
-
-	<select v-model="selected" @change='foo'>
+	<p>	<input v-model="sed" placeholder="edit me"></p>
+	<select v-model="sed" @change='foo' id="sel">
 		<option v-for="(val, index) in fruit" :value="val.id" :index=index>{{val.name}}</option>
 	</select>
 
-	<p>	<input v-model="selected" placeholder="edit me"></p>
-	<p>selected: {{selected}}, text: {{text}}</p> 
-	<p v-show="open">这是一段隐藏的内容</p>
-
-</div>	
-
-<div id="app1">
-
-	<select v-model="selected">
-		<option v-for="v in txt" :value="v.value">{{ v.text }}</option>
-	</select>
-	
-	<p>{{ selected.text }}</p>
+	<p>selected: {{sed}}, text: {{text}}, open:{{open}}</p> 
+	<p v-show="sed==2">这是一段隐藏的内容</p>
 
 </div>	
 
@@ -48,46 +37,34 @@ input{padding:7px;}
 new Vue({
 	el: '#app',
 	watch: {
-		selected: function (val) {
+		sed: function (val,val2) {
 			this.open = val == 2 ? true : false;
+//			this.text = $("#sel option:selected").text();
 		}
 	},
-
 	data: {
-		selected: 2,
+		sed: 2,
 		text: '',
+		open: false,
 		fruit: [
-			{id: 4, name: 'apple4'}, 
 			{id: 2,	name: 'peach2'},
 			{id: 3,	name: 'orange3'},
+			{id: 4, name: 'apple4'}, 
 		],
-
 	},
 	methods:{
 		foo: function(ele){
 			 var txt = $(ele.target).find("option:selected").text();  
 			 var val = ele.target.value;  
 			 this.text = txt;
-			 console.log(txt, val);				
+			 console.log(val, txt);				
 		},
-	}
-})
-
-var vm = new Vue({
-    el: '#app1',
-	data: {
-		selected: {},
-		text: '',
-		txt: [
-			{ value: 1, text: 'some text' },
-			{ value: 2, text: 'some other text' },
-			{ value: 3, text: 'some more text' },
-		],
-
+	},
+	mounted: function(){
+		this.text = $("#sel option:selected").text();
 	},
 })
 
-console.log(vm.txt);
 
 
 </script>
