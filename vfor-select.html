@@ -36,12 +36,6 @@ input{padding:7px;}
 
 new Vue({
 	el: '#app',
-	watch: {
-		sed: function (val,val2) {
-			this.open = val == 2 ? true : false;
-//			this.text = $("#sel option:selected").text();
-		}
-	},
 	data: {
 		sed: 2,
 		text: '',
@@ -52,11 +46,18 @@ new Vue({
 			{id: 4, name: 'apple4'}, 
 		],
 	},
+	watch: {
+		sed: function (val, val2) {
+			this.open = val == 2 ? true : false;
+			console.log(val, ',  ', val2);
+//			this.text = $("#sel option:selected").text();		// 这里可以设置text值
+		}
+	},
 	methods:{
 		foo: function(ele){
 			 var txt = $(ele.target).find("option:selected").text();  
 			 var val = ele.target.value;  
-			 this.text = txt;
+			 this.text = txt;							// 这里也可以设置text值
 			 console.log(val, txt);				
 		},
 	},
