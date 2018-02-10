@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>extend</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+pre{padding:20px;}
+
+</style>
+</head>
+<body>
+
+<pre>
+使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。
+
+https://cn.vuejs.org/v2/api/index.html#Vue-extend
+
+</pre>
+
+<hr />
+
+<div id="mount-point"></div>
+
+
+<script type="text/javascript">
+
+// 创建构造器
+var Profile = Vue.extend({
+  template: '<h2>{{firstName}} {{lastName}} aka {{alias}}</h2>',
+  data: function () {
+    return {
+      firstName: 'aa',
+      lastName: 'bb',
+      alias: 'cc'
+    }
+  }
+})
+// 创建 Profile 实例，并挂载到一个元素上。
+new Profile().$mount('#mount-point')
+
+</script>
+
+
+			
+</body>
+
+
+</html>
