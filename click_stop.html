@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>stop</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+#app{margin:20px auto;width:50%;height:200px;border:1px solid red;}
+h1{padding:10px;margin:20px auto;background:blue;color:#fff;}
+</style>
+</head>
+<body>
+
+<pre>
+
+.stop修饰符是用来阻止冒泡事件的发生的。
+
+</pre>
+
+<hr />
+
+<div id="app" @click="greet">
+	<h1 @click="m1">有冒泡事件</h1>
+	<h1 @click.stop="m2">阻止了冒泡事件</h1>
+</div>
+
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    counter: 0,
+	name: 'this is'
+  }, 
+  methods: {
+    greet: function (e) {
+      alert(this.name + "  " + e.target.tagName)		   // this在方法里指当前 Vue 实例 e是原生 DOM 事件
+    },
+
+    m1: function (e) {
+      alert("m1")		   
+    },
+
+    m2: function (e) {
+      alert("m2")		  
+    },
+  }
+})
+</script>
+
+			
+</body>
+</html>
