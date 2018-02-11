@@ -29,34 +29,37 @@ Vue.component(tag, {
 
 <div id="app">
     <vv></vv>
-	<t2></t2>
 	<t1></t1>
-
+	<t2></t2>
+	<t3></t3>
 </div>
 
 
 <script>
 
 // 全局组件 所有实例都能用全局组件。
-Vue.component('vv', {
+Vue.component('vv', {					// 把vv标签替换为template的内容
   template: '<h1>自定义组件!</h1>'
 })
 
-// 创建根实例
+// 局部组件 我们也可以在实例选项中注册局部组件，这样组件只能在这个实例中使用：
+var aa = {
+  template: '<h2>重复挂载#app</h2>'
+}
+
+var bb = {
+  template: '<h2>再挂载一次#app</h2>'
+}
+
 new Vue({
   el: '#app'
 })
 
-// 局部组件 我们也可以在实例选项中注册局部组件，这样组件只能在这个实例中使用：
-var cc = {
-  template: '<h2>Go 程序的性能优化及 pprof 的使用!</h2>'
-}
- 
 new Vue({
   el: '#app',
   components: {
-    't2': cc,
-	't1' : { template: '<h2>无公害刺青瓜</h2>'}
+    't1': aa,
+	't2' : bb,
   }
 })
 

@@ -5,7 +5,7 @@
 <title>extend</title>
 <meta name="Keywords" content="" />
 <meta name="Description" content="" />
-<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 
 <style type="text/css">
@@ -30,14 +30,20 @@ https://cn.vuejs.org/v2/api/index.html#Vue-extend
 <div id="mount-point"></div>
 
 <div id="app" class="ee">
-	<div id="app2" class="ff">
-		<h3>{{ name }}</h3>
-		<h3>{{ age }}</h3>
-	</div>
-
+	<h3>{{ name }}</h3>
+	<h3>{{ age }}</h3>
 </div>
 
 <script type="text/javascript">
+
+var vm = new Vue({
+	el: '#app',
+	data: {
+		name: '深圳',
+		age: Math.random(),
+}
+
+})
 
 // 创建构造器
 var Profile = Vue.extend({
@@ -52,15 +58,6 @@ var Profile = Vue.extend({
 
 // 创建 Profile 实例，并挂载到一个元素上。
 new Profile().$mount('#mount-point')
-
-var vm = new Vue({
-	el: '.ff',
-	data: {
-		name: '深圳',
-		age: Math.random(),
-}
-
-})
 
 </script>
 

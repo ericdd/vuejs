@@ -24,12 +24,12 @@ template选项现在不再是HTML元素，而是一个id，Vue.js根据这个id�
 </div>
 
 <template id="myComponent">
-	<div>This is a component!dd</div>
+	<h2	style="color:red">This is a component!dd</h2>
 </template>
 
 <script type="text/javascript">
 
-Vue.component('w',{
+Vue.component('w',{					// 把w标签替换为template的内容
 	template: '#myComponent',		// template可以是元素ID，也可以一段html代码
 	//template: '<h2>ddddd</h2>',
 })
