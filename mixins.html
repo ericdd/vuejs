@@ -33,7 +33,7 @@ https://cn.vuejs.org/v2/guide/mixins.html
 <div id="app" class="ee">
 	<div id="app2" class="ff">
 		<h3>{{ message }}</h3>
-		<h3>{{ age }}</h3>
+		<h3 id="h3">{{ age }}</h3>
 	</div>
 
 </div>
@@ -47,6 +47,11 @@ var mixin = {
       message: 'hello',
       foo: 'abc'
     }
+  },
+  methods: {
+    hi: function () {
+      $("#h3").html(this.message + ", " + this.foo)		 
+    }
   }
 }
 
@@ -59,8 +64,9 @@ new Vue({
     }
   },
   created: function () {
+	this.hi();							// 执行混入对象的方法
 	console.log(this.$data.message);
-    console.log(this.$data)		// => { message: "goodbye", foo: "abc", bar: "def" }    
+    console.log(this.$data)				// => { message: "goodbye", foo: "abc", bar: "def" }    
   }
 })
 
