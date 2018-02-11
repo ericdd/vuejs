@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>组件的创建和注册</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+template{display:none;}
+</style>
+</head>
+<body>
+
+<pre>
+理解组件的创建和注册
+https://www.cnblogs.com/jhj117/p/5634034.html
+</pre>
+<hr />
+
+<div id="app">
+	<my-component></my-component>
+</div>
+
+<div id="app2">
+	<my-component></my-component>
+</div>
+        
+
+<script type="text/javascript">
+
+// 1.创建一个组件构造器
+var myComponent = Vue.extend({
+	template: '<h2>This is my first component!</h2>'
+})
+
+// 2.注册组件，并指定组件的标签，组件的HTML标签为<my-component>
+Vue.component('my-component', myComponent)
+
+new Vue({
+	el: '#app'
+});
+
+var app2 = new Vue({
+	el: '#app2'
+})
+		
+</script>
+
+
+			
+</body>
+
+
+</html>
