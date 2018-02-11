@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>mixins</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+pre{padding:20px;}
+
+</style>
+</head>
+<body>
+
+<pre>
+可复用性 & 组合
+
+混入 (mixins) 是一种分发 Vue 组件中可复用功能的非常灵活的方式。混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被混入该组件本身的选项。
+
+https://cn.vuejs.org/v2/guide/mixins.html
+
+</pre>
+
+<hr />
+
+<div id="mount-point"></div>
+
+<div id="app" class="ee">
+	<div id="app2" class="ff">
+		<h3>{{ name }}</h3>
+		<h3>{{ age }}</h3>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+
+// 定义一个混入对象
+var myMixin = {
+  created: function () {
+    this.hello()
+  },
+  methods: {
+    hello: function () {
+      console.log('hello from mixin!')
+    }
+  }
+}
+
+// 定义一个使用混入对象的组件
+var Component = Vue.extend({
+  mixins: [myMixin]
+})
+
+var component = new Component() // => "hello from mixin!"
+
+var mixin = {
+  data: function () {
+    return {
+      message: 'hello',
+      foo: 'abc'
+    }
+  }
+}
+
+new Vue({
+  mixins: [mixin],
+  data: function () {
+    return {
+      message: 'goodbye',
+      bar: 'def'
+    }
+  },
+  created: function () {
+    console.log(this.$data)
+    // => { message: "goodbye", foo: "abc", bar: "def" }
+  }
+})
+
+</script>
+
+
+			
+</body>
+
+
+</html>

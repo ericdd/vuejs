@@ -50,12 +50,15 @@ var vm1 = new Vue({
 		},
 	},
 	created: function(){
+		alert("created");
 		console.log('created');
 	},
 	beforeMount: function(){
+		alert("beforeMount");
 		console.log('beforeMount模板编译之前');
 	},
 	mounted: function(){
+		alert("mounted");
 		console.log('mounted模板编译完成');
 	},
 	beforeUpdate: function(){

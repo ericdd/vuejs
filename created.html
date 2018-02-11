@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>created vue的生命周期</title>
+	<script src="js/vue.min.js"></script>
+	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	
+	<style type="text/css">
+	*{list-style:none;font-size:14px;font-family:tahoma;}
+	</style>
+</head>
+
+<body>
+
+<pre>
+
+Vue页面渲染流程 beforeCreate created beforeMount mounted
+Vue数据更新流程 beforeUpdate updated
+
+Jquery获取渲染后的数据写在mounted或updated
+
+http://www.cnblogs.com/GuliGugaLiz/p/7609103.html
+
+</pre>
+
+<hr />
+
+<div id="box">
+	<h3 id="h3">{{msg}}</h3>
+</div>
+
+</body>
+
+<script>
+
+var vm1 = new Vue({
+	el:"#box",
+	data:{
+		msg: Math.random(),
+	},
+
+	created: function(){
+		console.log('created: ', $("#h3").html());
+	},
+
+	beforeMount: function(){	
+		console.log('beforeMount: ', $("#h3").html());
+	},
+
+	mounted: function(){
+		console.log('mounted: ', $("#h3").html());		// 到这里jquery才可以取到渲染后的值
+	},
+
+	beforeUpdate: function(){
+		console.log("-----------------------");
+		console.log('beforeUpdate组件更新之前');
+	},
+
+	updated: function(){
+		console.log('updated组件更新完毕');
+	},
+
+	destroyed: function(){
+		console.log('destroyed');
+	},
+});
+
+</script>
+</html>
