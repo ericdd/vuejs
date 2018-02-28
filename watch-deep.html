@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>watch deep</title>
+<script src="js/vue.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+div{border:1px solid red;margin:10px ;padding:10px;}
+#p1{background:#ccc;color:#fff;padding:10px;}
+</style>
+</head>
+
+<body>
+
+<pre>
+使用深度deep: watch监听对象属性的变化
+
+deep:true	对象内部的属性监听，也叫深度监听  
+
+http://blog.csdn.net/itkingone/article/details/69568498
+
+</pre>
+<hr />
+
+<div id="div2">
+	<p>{{aa}}</p>
+	<p id="p1" @mouseover="foo">mouseover</p>
+</div>
+
+<script>
+
+
+
+var vm2 = new Vue({
+	el:"#div2",
+	data:{
+		aa:1,
+		bb:2,
+		cc:{
+			name:"eric",
+			age: 30,
+			city: "深圳",
+		}
+	},
+	
+	methods:{
+		foo:function(){
+			console.log("foo run")
+			this.cc.age ++;
+			this.cc.name = "eric" + Math.random();
+		}
+	},
+
+	watch:{
+		cc:{									// 整体监听cc
+			deep:true,
+			handler: function(newVal,oldVal){
+				console.log(newVal.age);
+			}	
+		},
+
+	   'cc.name': function(val,oldval){  		// 监听cc.name
+			console.log(val, ", cc.name")  
+		},
+
+	}
+})
+
+</script>
+
+</html>
