@@ -1,36 +1,80 @@
-
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>computed。</title>
-	</head>
-	<script src="js/vue.min.js"></script>
-	<body>
+<head>
+<meta charset="UTF-8">
+<title>computed。</title>
+</head>
+<script src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+</style>
+<body>
 <pre>
 计算属性关键词: computed。
+
+在模板中放入太多的逻辑会让模板过重且难以维护。模板不再简单和清晰。
+当你想要在模板中多次反向显示 message 的时候，应当使用计算属性的原因。
+
+我在此将三种方式进行了比较。返回的结果是一样的，写但在法上computed计算属性的方式在用属性时不用加(),而methods方式在使用时要像方法一样去用，必须加().
+
+两种方式在缓存上也大有不同，利用computed计算属性是将 reverseMessage与message绑定，只有当message发生变化时才会触发reverseMessage，
+而methods方式是每次进入页面都要执行该方法，但是在利用实时信息时，比如显示当前进入页面的时间，必须用methods方式
+
+http://blog.csdn.net/tashanhongye/article/details/76284373
+
+
 </pre>
 <hr />
 
+<input type="button" id="btn" value="确 定"/>
+
 <div id="app">
-  <p>原始字符串: {{ message }}</p>
-  <p>计算后反转字符串: {{ message2 }}</p>
+
+	<!-- 原始数据 -->
+	<h2>{{message}}</h2>
+
+	<!-- 直接在模板中绑定表达式 -->
+	<h2>{{message.split('').reverse().join('')}}</h2>
+
+	<!-- 运用计算属性 -->
+	<h2>{{reverseMessage}}</h2>
+
+	<!-- 运用methods方式 -->
+    <h2>{{methodMessage()}}</h2>
+
 </div>
     
 <script type="text/javascript">
+
 var vm = new Vue({
-  el: '#app',
-  data: {
-    message: 'Runoob!'
-  },
-  computed: {
-    // 计算属性的 getter
-    message2: function () {
-      // `this` 指向 vm 实例
-      return this.message.split('').reverse().join('')
-    }
-  }
+	el:"#app",
+	data:{
+		message:"hello"
+	},
+
+	computed:{
+		reverseMessage:function(){
+			console.log("触发了computed的reverseMessage");
+			return this.message.split('').reverse().join('');
+		}
+	},
+
+   methods:{
+		methodMessage:function () {
+			console.log("触发了methods的methodMessage");
+			return this.message.split('').reverse().join('');
+		}
+	}
 })
+
+$("#btn").click(function() {
+
+	vm.message = "world";   // 触发了computed和methods的方法
+
+})
+
+
 </script>
 
 				

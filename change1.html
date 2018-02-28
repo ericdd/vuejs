@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>change</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+</style>
+</head>
+<body>
+
+
+
+<pre>
+
+input, radio, checkbox也有change事件
+
+
+</pre>
+
+<hr />
+
+<div id="app">
+
+  <input type="text" @input="foo" @change="foo" />
+
+  <input type="checkbox" @input="foo" @change="foo" />
+
+  <input type="radio" name="radio" value="1" @input="foo"  @change="foo" />
+  <input type="radio" name="radio" value="2" @input="foo"  @change="foo" />
+
+  <select @input="foo" @change="foo">
+	  <option value="1">1</option>
+	  <option value="2">2</option>
+  </select>
+
+  <ul>
+    <li v-for="val in logs">{{ val }}</li>
+  </ul>
+
+</div>
+
+<script type="text/javascript">
+
+new Vue({
+  el: '#app',
+  data: {
+  	logs: []
+  },
+  methods: {
+  	foo: function (e) {
+		var o = e.target;
+		this.logs.push(e.type +" "+ o.type   +": "+ o.value);
+    },
+
+  }
+})
+
+
+</script>
+
+
+			
+</body>
+
+
+</html>

@@ -17,7 +17,7 @@
 Vue.js 的内联表达式非常方便，但它最合适的使用场景是简单的布尔操作或字符串拼接。如果涉及更复杂的逻辑，你应该使用计算属性。
 
 </pre>
-
+<hr />
 
 <div id="demo">{{fullName}}</div>
 
@@ -31,7 +31,7 @@ var vm = new Vue({
         },
         computed: {
             fullName: function () {
-                return this.firstName + ' ' + this.lastName
+                return this.firstName + '- ' + this.lastName
             }
         }
     })

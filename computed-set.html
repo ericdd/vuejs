@@ -18,6 +18,8 @@
 <pre>
 get和set函数都是data有变化时才触发
 
+firstName和lastName有变化是会触发computed的
+
 </pre>
 
 <div id="d1">
@@ -42,8 +44,8 @@ get和set函数都是data有变化时才触发
 var vm = new Vue({
 	el:'#demo',
 	data: {
-		firstName: 'Foo',
-		lastName: 'Bar'
+		firstName: '黄',
+		lastName: '小明'
 	},
 	computed: {
 	  fullName: {
