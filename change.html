@@ -20,7 +20,7 @@
 input, radio, checkbox也有change事件
 
 input事件：实时监听
-change事件：失去焦点并value有变化是才执行
+change事件：失去焦点并value有变化是才执行。
 
 
 </pre>
@@ -29,8 +29,8 @@ change事件：失去焦点并value有变化是才执行
 
 <div id="app">
 
-  <input type="text" @change="foo" @input="foo" />
-
+  <input type="text" @change="foo" @input="foo" @blur="foo" v-model="aa"/>
+	<h2>{{aa}}</h2>	
   <ul>
     <li v-for="val in logs">{{ val }}</li>
   </ul>
@@ -41,7 +41,8 @@ change事件：失去焦点并value有变化是才执行
 new Vue({
   el: '#app',
   data: {
-  	logs: []
+  	logs: [],
+	aa:'',
   },
   methods: {
   	foo: function (e) {
