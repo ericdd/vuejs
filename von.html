@@ -16,10 +16,8 @@ v-on 指令用于监听DOM事件 形式如：v-on:click  缩写为 @click;
 
 
 <div id="test">
-	<img v-bind:src="w" :title="q"><br />
-
-	<p><a v-on:click="update()" href="#">更改{{q}}图片</a></p>
-	<p><a @click="update(s)" href="#">更改为s图片</a></p>
+	<img :src="w" :title="w"><br />
+	<p><a @click="update(s)" href="#">更改为 {{w}}</a></p>
 
 </div>
 
@@ -28,14 +26,12 @@ v-on 指令用于监听DOM事件 形式如：v-on:click  缩写为 @click;
 new Vue({
   el: '#test',
   data: {
-	q: "baidu.com",
 	w: "img/1.jpg", 
 	s: "img/2.jpg",
 	},
   methods: {
-	update: function(aa){
-	  if(!aa) aa = "img/0.jpg";
-	  this.w = aa
+	update: function(src){
+	  this.w = src
 	}
   }
 })
