@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ajax get</title>
+</head>
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/vue.js"></script>
+<script src="../js/vue-resource.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+
+#stable{width:60%;margin:20px auto;color:#000;font-size:12px;text-align:left;font-family:"Microsoft YaHei", Tahoma,background:#fff;border-collapse:collapse;}
+#stable th{padding:10px 15px;color:#333;text-align:left;border:1px solid #ddd;background:#F0F5F7;}
+#stable td{padding:8px 15px;border:1px solid #ddd;text-align:left;}
+#stable tbody tr.trSelected{background:#CCFFFF;}
+#stable tbody tr:hover{background:#FFFF99;}
+
+</style>
+<body>
+<pre>
+
+https://github.com/pagekit/vue-resource/blob/HEAD/docs/http.md
+https://www.cnblogs.com/axl234/p/5899137.html
+
+</pre>
+<hr />
+
+<div id="app">
+
+	<div id="box">
+		<input type="button" @click="get()" value="按钮get">
+		<input type="button" @click="post()" value="按钮post">
+	</div>
+
+
+	<table	id="stable">
+
+		<thead>
+			<tr>
+				<th v-for="col in columns">
+					{{ col}}
+				</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr v-for="entry in data">
+				<td v-for="(v,k) in entry">
+				{{v}}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
+
+
+<script type="text/javascript">
+
+     var vm = new Vue({
+                el:'#app',
+                data:{
+                    msg:'Hello World!',
+					columns: ['name', 'age', 'city'],
+					data: [],
+                },
+                methods:{
+                    get:function(){
+                        this.$http.get('test.php?'+ Math.random(),  {params: {a: 'bar', b: 4}, headers: {'X-Custom': '123'}}).then(function(res){
+                           this.data = res.body;
+
+						   console.log(res.status);
+						   console.log(res.statusText);
+						   console.log(res.headers.get('Date'));
+	
+                        },function(res){
+                            console.log(res.body, ', 请求失败处理');  
+                        });
+                    },
+
+                    post:function(){
+                        this.$http.post('test.php', {a:3,b:4}).then(function(res){
+							this.data = res.body;
+                        },function(res){
+                            console.log(res.body, ', 请求失败处理');  
+                        });
+                    }
+                }
+            });
+
+
+</script>
+				
+	</body>
+
+
+</html>

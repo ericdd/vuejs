@@ -4,8 +4,8 @@
 	<meta charset="UTF-8">
 	<title>ajax</title>
 </head>
-<script src="js/jquery-1.9.1.min.js"></script>
-<script src="js/vue.min.js"></script>
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/vue.min.js"></script>
 <style type="text/css">
 *{list-style:none;font-size:14px;font-family:tahoma;}
 li{border:1px solid #ccc;padding:10px;}
@@ -46,12 +46,12 @@ new Vue({
 	data:{data:""},
 
 	beforeCreate:function(){
-		var url="ajax/test.php";
-		var _self=this;
+		var url="test1.php";
+		var that = this;
 		$.get(url,function(data){
-			_self.data = eval("(" + data +")");
+			that.data = eval("(" + data +")");
 			console.info(data);
-			console.log(_self.data);
+			console.log(that.data);
 		})
 	}
   });

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ajax post</title>
+</head>
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/vue.js"></script>
+<script src="../js/vue-resource.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+
+#stable{width:60%;margin:20px auto;color:#000;font-size:12px;text-align:left;font-family:"Microsoft YaHei", Tahoma,background:#fff;border-collapse:collapse;}
+#stable th{padding:10px 15px;color:#333;text-align:left;border:1px solid #ddd;background:#F0F5F7;}
+#stable td{padding:8px 15px;border:1px solid #ddd;text-align:left;}
+#stable tbody tr.trSelected{background:#CCFFFF;}
+#stable tbody tr:hover{background:#FFFF99;}
+
+</style>
+<body>
+<pre>
+
+https://github.com/pagekit/vue-resource/blob/HEAD/docs/http.md
+https://www.cnblogs.com/axl234/p/5899137.html
+
+无{emulateJSON: true}，Content-Type请求头是  Content-Type:application/json;charset=UTF-8
+设置{emulateJSON: true}， Content-Type请求头是 Content-Type:application/x-www-form-urlencoded， 服务器端可以通过$_POST/$_GET取到数据
+
+emulateJSON的作用
+如果Web服务器无法处理编码为application/json的请求，你可以启用emulateJSON选项。
+启用该选项后，请求会以application/x-www-form-urlencoded作为MIME type，就像普通的HTML表单一样。
+
+</pre>
+
+<hr />
+
+<div id="app">
+
+	<div id="box">
+		<input type="button" @click="get()" value="按钮get">
+		<input type="button" @click="post()" value="按钮post">
+		<input type="button" @click="postJSON()" value="按钮postJSON">
+	</div>
+
+
+	<table	id="stable">
+
+		<thead>
+			<tr>
+				<th v-for="col in columns">
+					{{ col}}
+				</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr v-for="entry in data">
+				<td v-for="(v,k) in entry">
+				{{v}}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
+
+
+<script type="text/javascript">
+
+// 基于全局Vue对象使用http
+
+     var vm = new Vue({
+                el:'#app',
+                data:{
+                    msg:'Hello World!',
+					columns: ['name', 'age', 'city'],
+					data: [],
+                },
+                methods:{
+                    get:function(){
+						var that = this;
+                        Vue.http.get('test.php',  {params: {a:1, b: 2}, headers: {'X-Custom': '123'} }).then(function(res){
+                           that.data = res.body;
+
+						   console.log(res.status);
+						   console.log(res.statusText);
+						   console.log(res.headers.get('Content-Type'));
+	
+                        },function(res){
+                            console.log(res.body, ', 请求失败处理');  
+                        });
+                    },
+
+                    post:function(){
+						var that = this;
+                        Vue.http.post('test.php', {a:3,b:4} ).then(function(res){
+							that.data = res.body;
+							console.log(res.headers.get('Content-Type'));
+                        },function(res){
+                            console.log(res.body, ', 请求失败处理');  
+                        });
+                    },
+
+                    postJSON:function(){
+						var that = this;
+                        Vue.http.post('test.php', {a:3,b:4}, {emulateJSON: true}).then(function(res){
+							that.data = res.body;
+							console.log(res.headers.get('Content-Type'));
+                        },function(res){
+                            console.log(res.body, ', 请求失败处理');  
+                        });
+                    },
+                }
+            });
+
+
+</script>
+				
+	</body>
+
+
+</html>
