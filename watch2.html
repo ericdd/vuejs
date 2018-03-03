@@ -14,21 +14,19 @@ li{border:1px solid #ccc;padding:10px;}
 
 <body>
 <pre>
-v-for指令基于一个数组渲染一个列表，它和JavaScript的遍历语法相似：
-
-v-for="item in items"
-items是一个数组，item是当前被遍历的数组元素。
+watch监听对象里某个属性的变化
+watch可以在vue的实例上watch，也可以在组件的实例上watch
 </pre>
 <hr />
 
 <div id="box1">
-watch监听对象里某个属性的变化
-watch可以在vue的实例上watch，也可以在组件的实例上watch
+
 </div>
 
 <div id="app">
 
-	<div>{{jj.a}}</div>
+	<h2>{{jj.a}}</h2>
+
 	<table>
 		<thead>
 			<tr>
@@ -54,7 +52,6 @@ var vm = new Vue({
 		el: '#app',
 		data: {
 			jj: {a:11, b:22},
-			city: "深圳",
 			arr: [{
 				name: '小明',
 				age: 30,
@@ -66,23 +63,16 @@ var vm = new Vue({
 				sex: 'Male'
 			}]
 		},
-		watch:{			//	arr变化后，模板渲染之前执行
+		watch:{			
 			"arr": function(nv, ov) {
-				alert("arr变了");
-				console.log(nv);
-				console.log(ov);
+				console.log("arr变了 ", nv);
 			}
 		}
 	})
 
-vm.$watch('arr', function (nv, ov) {		// 不执行
-    alert("arr ". Math.random());
-})
-
 vm.$watch('jj.a', function (nv, ov) {
-    alert("jj.a变啦，" +","+nv +","+ ov +"," + this.jj.a);
+    console.log("jj.a变啦，" + this.jj.a);
 })
-
 
 vm.arr.push({name:"nolan", age:32, sex:"Male"})
 

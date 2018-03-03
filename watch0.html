@@ -11,30 +11,32 @@ div{border:1px solid red;margin:10px ;padding:10px;}
 
 <body>
 
-<div id="div2">
-	<p @mouseover="m2">{{aa}}</p>
+
+<div id="div1">
+	<p>{{aa}}</p>
+	<p>{{bb}}</p>
 </div>
+
+
 
 <script>
 
-
-var vm2 = new Vue({
-	el:"#div2",
+var vm1 = new Vue({
+	el:"#div1",
 	data:{
-		aa:1
-	},
-	methods:{
-		m2:function(){
-			this.aa++
-		}
+		aa:1,
+		bb:22,
 	},
 
 	watch:{
-		"aa":function(newVal, oldVal){
-			console.log("aa有变化：", newVal);
-		}
+	"aa":function(newVal, oldVal){
+		console.log("aa有变化：", newVal);
 	}
-})
+	}
+});
+
+vm1.$data.aa = 5;		// 这里触发watch
+
 
 </script>
 
