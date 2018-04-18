@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>v-for遍历输出json对象</title>
+</head>
+<script src="js/vue.min.js"></script>
+<body>
+
+<pre>
+
+v-for遍历输出json对象
+
+</pre>
+<hr />
+
+<div id="app">
+
+ <div v-for = "(item,key) in web">{{ key }} ： {{ item }}</div> 
+
+</div>
+
+</body>
+<script>
+var vm = new Vue({
+	el: '#app',
+	data: {
+		age: 1,
+		web:{  
+			"百度":"https://www.baidu.com",  
+			"新浪":"https://www.sina.com",  
+			"淘宝":"https://www.taobao.com"  
+		}  
+	},  
+  mounted:function(){
+	
+  }
+})
+</script>
+</html>

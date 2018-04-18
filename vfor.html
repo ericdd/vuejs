@@ -7,7 +7,6 @@
     <script src="js/vue.min.js"></script>
     <body>
 <pre>
-v-for指令基于一个数组渲染一个列表，它和JavaScript的遍历语法相似：
 
 v-for="item in items"
 items是一个数组，item是当前被遍历的数组元素。
@@ -49,23 +48,11 @@ var vm = new Vue({
 		data: {
 			name: "pre",
 			age: 1,
-			arr: [{
-				name: '小明',
-				age: 30,
-				sex: 'Male'
-			}, {
-				name: '小红',
-				age: 26,
-				sex: 'Male'
-			}, {
-				name: 'Tracy',
-				age: 22,
-				sex: 'Female'
-			}, {
-				name: 'Chris',
-				age: 36,
-				sex: 'Male'
-			}]
+			arr: [
+				{name: '小明',age: 30,sex: 'Male'}, 
+				{name: '小红',age: 26,sex: 'Male'},
+				{name: 'Tracy',age: 22,sex: 'Female'}, 
+				]
 		},  
 	  mounted:function(){
 		//alert('render complete')
