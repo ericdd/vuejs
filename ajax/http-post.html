@@ -69,49 +69,49 @@ emulateJSON的作用
 
 // 基于全局Vue对象使用http
 
-     var vm = new Vue({
-                el:'#app',
-                data:{
-                    msg:'Hello World!',
-					columns: ['name', 'age', 'city'],
-					data: [],
-                },
-                methods:{
-                    get:function(){
-						var that = this;
-                        Vue.http.get('test.php',  {params: {a:1, b: 2}, headers: {'X-Custom': '123'} }).then(function(res){
-                           that.data = res.body;
+var vm = new Vue({
+		el:'#app',
+		data:{
+			msg:'Hello World!',
+			columns: ['name', 'age', 'city'],
+			data: [],
+		},
+		methods:{
+			get:function(){
+				var that = this;
+				Vue.http.get('test.php',  {params: {a:1, b: 2}, headers: {'X-Custom': '123'} }).then(function(res){
+				   that.data = res.body;
 
-						   console.log(res.status);
-						   console.log(res.statusText);
-						   console.log(res.headers.get('Content-Type'));
-	
-                        },function(res){
-                            console.log(res.body, ', 请求失败处理');  
-                        });
-                    },
+				   console.log(res.status);
+				   console.log(res.statusText);
+				   console.log(res.headers.get('Content-Type'));
 
-                    post:function(){
-						var that = this;
-                        Vue.http.post('test.php', {a:3,b:4} ).then(function(res){
-							that.data = res.body;
-							console.log(res.headers.get('Content-Type'));
-                        },function(res){
-                            console.log(res.body, ', 请求失败处理');  
-                        });
-                    },
+				},function(res){
+					console.log(res.body, ', 请求失败处理');  
+				});
+			},
 
-                    postJSON:function(){
-						var that = this;
-                        Vue.http.post('test.php', {a:3,b:4}, {emulateJSON: true}).then(function(res){
-							that.data = res.body;
-							console.log(res.headers.get('Content-Type'));
-                        },function(res){
-                            console.log(res.body, ', 请求失败处理');  
-                        });
-                    },
-                }
-            });
+			post:function(){
+				var that = this;
+				Vue.http.post('test.php', {a:3,b:4} ).then(function(res){
+					that.data = res.body;
+					console.log(res.headers.get('Content-Type'));
+				},function(res){
+					console.log(res.body, ', 请求失败处理');  
+				});
+			},
+
+			postJSON:function(){
+				var that = this;
+				Vue.http.post('test.php', {a:3,b:4}, {emulateJSON: true}).then(function(res){
+					that.data = res.body;
+					console.log(res.headers.get('Content-Type'));
+				},function(res){
+					console.log(res.body, ', 请求失败处理');  
+				});
+			},
+		}
+	});
 
 
 </script>

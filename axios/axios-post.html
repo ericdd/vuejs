@@ -2,11 +2,11 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>ajax get</title>
+	<title>axios post</title>
 </head>
 <script src="../js/jquery-1.9.1.min.js"></script>
 <script src="../js/vue.js"></script>
-<script src="../js/vue-resource.js"></script>
+<script src="../js/axios.min.js"></script>
 <style type="text/css">
 *{list-style:none;font-size:14px;font-family:tahoma;}
 
@@ -20,8 +20,16 @@
 <body>
 <pre>
 
-https://github.com/pagekit/vue-resource/blob/HEAD/docs/http.md
-https://www.cnblogs.com/axl234/p/5899137.html
+https://www.kancloud.cn/yunye/axios/234845
+
+axios提供了一下几种请求方式
+axios.request(config)
+axios.get(url[, config])
+axios.delete(url[, config])
+axios.head(url[, config])
+axios.post(url[, data[, config]])
+axios.put(url[, data[, config]])
+axios.patch(url[, data[, config]])
 
 </pre>
 <hr />
@@ -58,36 +66,24 @@ https://www.cnblogs.com/axl234/p/5899137.html
 
 <script type="text/javascript">
 
-var vm = new Vue({
-		el:'#app',
-		data:{
-			msg:'Hello World!',
-			columns: ['name', 'age', 'city'],
-			data: [],
-		},
-		methods:{
-			get:function(){
-				this.$http.get('test.php?'+ Math.random(),  {params: {a: 'bar', b: 4}, headers: {'X-Custom': '123'}}).then(function(res){
-				   this.data = res.body;
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
-				   console.log(res.status);
-				   console.log(res.statusText);
-				   console.log(res.headers.get('Date'));
 
-				},function(res){
-					console.log(res.body, ', 请求失败处理');  
-				});
-			},
+axios({
+  url: 'test.php',
+  method: 'post',
+  data: {
+    a: '33',
+    b: '44'
+  },
+  transformRequest: [function (data) {
+	console.log(data);
 
-			post:function(){
-				this.$http.post('test.php', {a:3,b:4}).then(function(res){
-					this.data = res.body;
-				},function(res){
-					console.log(res.body, ', 请求失败处理');  
-				});
-			}
-		}
-	});
+  }],
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  }
+})
 
 
 </script>
