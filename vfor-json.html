@@ -16,7 +16,13 @@ v-for遍历输出json对象
 
 <div id="app">
 
- <div v-for = "(item,key) in web">{{ key }} ： {{ item }}</div> 
+	<div v-for = "(item,key) in web">{{ key }} ： {{ item }}</div> 
+	<br>
+
+	<select id="" name="">
+	<option value="">请选择</option>
+	<option v-for = "(item,key) in web" :value="key">{{ item }}</option>
+	</select>
 
 </div>
 

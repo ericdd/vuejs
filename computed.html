@@ -43,6 +43,8 @@ http://blog.csdn.net/tashanhongye/article/details/76284373
 	<!-- 运用methods方式 -->
     <h2>{{methodMessage()}}</h2>
 
+    <h2 style="color:blue" v-for="val in message_arr">{{val}}</h2>
+
 </div>
     
 <script type="text/javascript">
@@ -57,6 +59,11 @@ var vm = new Vue({
 		reverseMessage:function(){
 			console.log("触发了computed的reverseMessage");
 			return this.message.split('').reverse().join('');
+		},
+
+		message_arr:function(){
+			console.log("触发了computed的reverseMessage");
+			return this.message.split('');
 		}
 	},
 
