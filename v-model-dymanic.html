@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>test</title>
+<title>v-model动态生成</title>
 <meta name="Keywords" content="" />
 <meta name="Description" content="" />
 <script type="text/javascript" src="js/vue.min.js"></script>
@@ -16,37 +16,38 @@
 
 
 <pre>
-两者无论谁被改变，另一方也会相应的更新为相同的数据
+vue中v-model动态生成
+https://blog.csdn.net/zhuming3834/article/details/70170305
 </pre>
 
  <div id="app">
-		<div class="line" v-for="(item,index) in dataModel">
-			<input type="text" v-model="dataModel[index].value1" />
-			<span>{{dataModel[index].value1}}</span>
+	<div class="line" v-for="(item,index) in dataModel">
+		<input type="text" v-model="dataModel[index].value1" />
+		<span>{{dataModel[index].value1}}</span>
 
-			<button v-bind:data-index="index" v-on:click="submitClick">提交</button>
+		<button v-bind:data-index="index" v-on:click="submitClick">提交</button>
 
-			<input type="text" v-model="dataModel[index].value2" />
-			<span>{{dataModel[index].value2}}</span>
-		</div>
+		<input type="text" v-model="dataModel[index].value2" />
+		<span>{{dataModel[index].value2}}</span>
 	</div>
+</div>
 
 <script>
 	var app = new Vue({
 		el: "#app",
 		data: {
 			// 创建一个空的数组 
-			dataModel: [{value1: 1,value2: ''},{value1: 2,value2: ''},{value1: 3,value2: ''},]
+			dataModel: [{value1: -1,value2: ''},{value1: 0,value2: ''}]
 		},
 		created: function(){
 			// 这里是动态生成v-model,这个可以放在网络请求成功里面;
-//			var len = 4;
-//			for (var i = 0; i < len; i ++) {
-//				var item = {value1: i,value2: ''};
-//				this.dataModel.push(item);
-//			}
-//
-//			console.log(this.dataModel);
+			var len = 3;
+			for (var i = 0; i < len; i ++) {
+				var item = {value1: i,value2: ''};
+				this.dataModel.push(item);
+			}
+
+			console.log(this.dataModel);
 		},
 		methods: {
 			// 显示v-model里面的数据

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>v-html</title>
+</head>
+<script src="js/vue.min.js"></script>
+<body>
+<pre>
+为了输出真正的 HTML，你需要使用 v-html 指令：
+</pre>
+<hr />
+
+<h2>
+	这个 span 的内容将会被替换成为属性值 rawHtml
+</h2>
+
+<div id="app">
+	{{name}}
+	<div v-html="name">Hello, Vue.js!</div>
+	<h1>Hello, Vue.js!</h1>
+</div>
+
+
+</body>
+
+<script>
+var vm = new Vue({
+	el: '#app',
+	data: {
+		mre : "默认",
+		name: '<h1>使用v-html解析html标签</h1>'
+	}
+})
+</script>
+</html>
