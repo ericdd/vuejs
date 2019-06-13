@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>v-for</title>
+    </head>
+    <script src="js/vue.min.js"></script>
+    <body>
+<pre>
+
+v-for="item in items"
+items是一个数组，item是当前被遍历的数组元素。
+
+vue.js渲染完成后，想触发一些事情，写在哪里呢？
+
+答案是mounted
+
+</pre>
+<hr />
+
+<div id="app">
+
+{{fruit.length}}
+
+
+<ul id="example-1">
+  <li v-for="(v,index) in fruit">
+   {{index}} - {{v}}
+  </li>
+</ul>
+
+</div>
+
+</body>
+<script>
+var vm = new Vue({
+		el: '#app',
+		data: {
+			name: "pre",
+			fruit: ["aa","bb","cc"]
+		},  
+	  mounted:function(){
+
+	  }
+	})
+</script>
+</html>
