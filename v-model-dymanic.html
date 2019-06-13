@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>v-model动态生成</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+*{list-style:none;font-size:14px;font-family:tahoma;}
+</style>
+</head>
+<body>
+
+
+
+<pre>
+vue中v-model动态生成
+https://blog.csdn.net/zhuming3834/article/details/70170305
+</pre>
+
+ <div id="app">
+	<div class="line" v-for="(item,index) in rows">
+
+		<input type="text" v-model="rows[index].id" />
+		<span>{{rows[index].id}}</span>
+
+		<button v-bind:data-index="index" v-on:click="submitClick">提交</button>
+
+		<input type="text" v-model="rows[index].uname" />
+
+		<span>{{rows[index].uname}}</span>
+
+	</div>
+</div>
+
+<script>
+	var app = new Vue({
+		el: "#app",
+		data: {
+			rows: [{id: 1, uname: 'eric'}, {id: 2, uname: 'nolan'}]
+		},
+
+		created: function(){
+			
+			for (var i = 2; i < 5; i ++) {
+				var item = {id: i,uname: 'adder'+i};
+				this.rows.push(item);
+			}
+
+			console.log(this.rows);
+		},
+
+		methods: {
+			// 显示v-model里面的数据
+			submitClick: function(event){
+				var tag = event.target;
+				var index = tag.getAttribute('data-index');
+				alert(this.rows[index].id);
+			}
+		}
+	})
+</script>
+
+
+			
+</body>
+
+
+</html>

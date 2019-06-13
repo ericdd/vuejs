@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>hello</title>
+<script src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+</head>
+
+<body>
+<div id="app" class="ee">
+
+	<h3 :title="city">{{ name }}</h3>
+	<h3 :title="'aaa'+city">{{ age }}</h3>
+	<h3>{{ city }}</h3>	
+	<h3>{{ aa }}</h3>
+
+</div>
+
+
+</body>
+
+<script>
+
+var exampleData = {
+	name: '小米',
+	age: Math.random(),
+	city: "深圳",
+	aa: "bbb",
+}
+
+var vm = new Vue({
+	el: '#app',
+	data: exampleData
+})
+
+
+
+</script>
+</html>
